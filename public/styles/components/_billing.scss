@@ -1,0 +1,36 @@
+.billing {
+  flex-wrap: wrap;
+  width: 90%;
+  background: $color-primary;
+  @include flex(row, center, center);
+  box-shadow: 0 1rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
+  margin-bottom: 2rem;
+  padding: 2rem;
+  &__card {
+    flex: 0 0 30%;
+    background: $color-primary-light;
+    @include flex(row, center, center);
+    margin-right: auto;
+    text-align: center;
+  }
+  &__content {
+    width: 60%;
+    & > * {
+      margin-bottom: 1rem;
+    }
+  }
+  &__rating {
+    &-star {
+      height: 2rem;
+      width: 2rem;
+      margin-right: 1px;
+
+      &--active {
+        fill: $color-primary;
+      }
+      &--inactive {
+        fill: #bbb;
+      }
+    }
+  }
+}

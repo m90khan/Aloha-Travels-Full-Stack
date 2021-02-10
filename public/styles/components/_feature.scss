@@ -1,0 +1,42 @@
+.features {
+  @include flex(row, center, center);
+  @include centerAuto;
+  @include respond(tab-land) {
+    margin-bottom: -20rem;
+  }
+  & > *:not(last-child) {
+    margin-right: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  flex-wrap: wrap;
+}
+
+.feature {
+  flex: 1 1 25rem;
+  @include respond(iPro) {
+    flex: 1 1 35rem;
+  }
+  padding: 5rem 1.5rem;
+  background: $color-white;
+
+  border-radius: 1rem;
+  height: 40vh;
+
+  @include flex(column, space-evenly, center);
+  img {
+    width: 25%;
+    height: 35%;
+    object-fit: contain;
+    @include respond(iPro) {
+      width: 30%;
+    }
+  }
+  &-content {
+    text-align: center;
+    line-height: 1.2;
+    & > *:not(last-child) {
+      margin-bottom: 1rem;
+    }
+    @include flex(column, center, center);
+  }
+}

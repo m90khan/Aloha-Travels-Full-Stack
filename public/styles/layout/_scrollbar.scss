@@ -1,0 +1,61 @@
+html {
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: $color-grey-dark-1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $color-primary;
+    background-image: url(../img/pin.png);
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: $color-primary-light;
+    cursor: pointer;
+  }
+}
+
+:root {
+  transition-timing-function: cubic-bezier(0.5, 0.7, 0.4, 1);
+}
+
+.review-number {
+  text-align: center;
+  @include flex(row, flex-start, center);
+  width: 100%;
+  *:not(:last-child) {
+    margin-right: 3rem;
+  }
+}
+.review-number__slider {
+  padding: 0.2rem;
+  -webkit-appearance: none;
+  margin: 1rem 0rem;
+  width: 30%;
+  position: relative;
+  background: rgb(88, 88, 88);
+  cursor: pointer;
+  border-radius: 1rem;
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5rem;
+    background: $color-primary;
+    cursor: pointer;
+  }
+}
+
+.review-number__rating {
+  color: $color-primary;
+}

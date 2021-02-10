@@ -1,0 +1,71 @@
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin centerAuto {
+  width: 90%;
+  margin: auto;
+}
+
+// Media Queries Manager
+/* 
+Proceeding with Good Approach : 
+Desktop First Apprach
+ using the analytics data for most used devices wrt to their width
+
+ 0-600px : Phone
+ 600-900px : Tablet Portrait
+ 900-1200px : Tablet Landscape
+1200-1800 : Desktop (where normal styles apply)
+1800+ : Big screens
+
+
+*/
+
+/* $breakpoint arguments 
+//   phone: '37.5em',
+//   ipad: '48em',
+//   ipadPro: '64em',
+//   Laptop: '85.5em',
+//   Desktop: '100em',
+//   BigDesktop: '120em',
+
+1em = 16px (as rem does not work in some browssers)
+
+Order: Base + typography > general layout + grid > page layout >componenets
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } //600px
+  }
+  @if $breakpoint == iPad {
+    @media only screen and (max-width: 48em) {
+      @content;
+    } //768px
+  }
+  @if $breakpoint == iPro {
+    @media only screen and (max-width: 64em) {
+      @content;
+    } //1024px
+  }
+  @if $breakpoint == laptop {
+    @media only screen and (max-width: 85.5em) {
+      @content;
+    } //1366px
+  }
+  @if $breakpoint == desktop {
+    @media only screen and (max-width: 100em) {
+      @content;
+    } //1600
+  }
+  @if $breakpoint == bigDesktop {
+    @media only screen and (min-width: 120em) {
+      @content;
+    } //1920
+  }
+}

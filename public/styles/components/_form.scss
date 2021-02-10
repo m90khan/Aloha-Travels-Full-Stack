@@ -1,0 +1,125 @@
+.login-form {
+  background-image: linear-gradient(
+    to right top,
+    rgba($color-primary-light, 0.8),
+    rgba($color-primary-dark, 0.4)
+  );
+  margin: 8rem auto;
+  max-width: 45%;
+  background-color: #fff;
+  box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  padding: 2rem 4rem;
+  border-radius: 5px;
+  @include respond(tab-port) {
+    max-width: 80%;
+    margin: 5rem auto;
+  }
+  @include respond(phone) {
+    max-width: 90%;
+    margin: 5rem auto;
+  }
+  h3 {
+    font-size: 3.5rem;
+  }
+}
+
+.form__input {
+  display: block;
+  font-family: $font-secondary;
+  font-size: 1.5rem;
+  color: inherit;
+  padding: 1.25rem 1.75rem;
+  border: none;
+  width: 90%;
+
+  background-color: #f2f2f2;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+  border-radius: 4px;
+  box-sizing: border-box;
+  @include respond(iPro) {
+    max-width: 90%;
+  }
+  @include respond(iPad) {
+    width: 80%;
+  }
+  @include respond(phone) {
+    width: 100%;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: 3px solid #45eb7c;
+  }
+  &:focus:invalid {
+    border-bottom: 3px solid #ff4f30;
+  }
+  &::-webkit-input-placeholder {
+    color: rgb(189, 189, 189);
+  }
+}
+
+.form {
+  &__group {
+    width: 100%;
+    &:not(:last-child) {
+      margin-bottom: 2.5rem;
+    }
+
+    svg {
+      position: absolute;
+      margin-left: 4rem;
+      left: 8rem;
+      z-index: 10;
+    }
+
+    &--upload {
+      @include flex(row, flex-start, center);
+      position: relative;
+      font-size: 1.6rem;
+    }
+    &-user__photo {
+      height: 7.5rem;
+      width: 7.5rem;
+      border-radius: 50%;
+      margin-right: 2rem;
+    }
+    &-user__upload {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+    &-user__label {
+      margin-left: 5rem;
+      display: inline-block;
+      text-decoration: none;
+      border-bottom: 1px solid $color-primary;
+      padding: 1rem;
+      -webkit-transition: all 0.2s;
+      transition: all 0.2s;
+      cursor: pointer;
+      &:hover {
+        background-color: $color-primary;
+        color: #fff;
+        -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+        -webkit-transform: translateY(-2px);
+        transform: translateY(-2px);
+      }
+    }
+    &-user__upload:focus &-user__label {
+      outline: 10px solid $color-primary;
+      outline-offset: 3px;
+    }
+  }
+  &__label {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+}

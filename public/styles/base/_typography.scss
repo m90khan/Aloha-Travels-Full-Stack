@@ -1,0 +1,58 @@
+%heading {
+  font-family: $font-primary;
+  font-weight: 400;
+}
+
+%paragraph {
+  font-family: $font-secondary;
+  font-weight: 300;
+}
+
+h1 {
+  @extend %heading;
+  font-size: var(--h1);
+}
+h2 {
+  @extend %heading;
+  font-size: var(--h2);
+}
+
+h3 {
+  @extend %heading;
+  font-size: var(--h3);
+}
+
+h4 {
+  @extend %heading;
+  font-size: var(--h4);
+}
+
+h5 {
+  @extend %heading;
+  font-size: var(--h5);
+}
+h6 {
+  @extend %paragraph;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+li,
+button,
+label,
+input,
+a,
+p {
+  @extend %paragraph;
+  font-size: var(--p);
+}
+
+.desc-text {
+  color: $color-grey-dark-1;
+  font-weight: 300;
+  @extend %paragraph;
+}
+
+// .heading-primary {
+//   color: $color-primary;
+//   @extend %heading;
+// }

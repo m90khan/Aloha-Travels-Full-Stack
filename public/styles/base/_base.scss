@@ -1,0 +1,56 @@
+/* Global Reset */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  cursor: none;
+
+  font-size: 62.5%; //1rem = 10px
+  @include respond(bigDesktop) {
+    font-size: 90%;
+  }
+  @media only screen and (max-width: 1900px) {
+    font-size: 85%;
+  }
+  @include respond(desktop) {
+    font-size: 80%;
+  }
+  @include respond(iPro) {
+    font-size: 60%;
+  }
+  @include respond(iPad) {
+    font-size: 50%;
+  }
+}
+
+li,
+button,
+label,
+input,
+p {
+  font-size: var(--text);
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+body {
+  background: #fff2d6;
+  overflow-x: hidden;
+}

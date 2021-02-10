@@ -1,0 +1,123 @@
+.package {
+  flex: 0 0 30%;
+
+  background: $color-grey-light-1;
+  padding: 2rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  @include respond(iPro) {
+    min-height: 50vh;
+    flex: 0 0 45%;
+
+    @include flex(column, space-evenly, center);
+  }
+  @include respond(iPad) {
+    min-height: 55vh;
+  }
+  @include respond(phone) {
+    flex: 0 0 90%;
+    height: 100%;
+    min-height: 60%;
+  }
+  &-header {
+    margin-bottom: auto;
+    position: relative;
+    text-align: center;
+    &__image {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+
+    &-wishicon {
+      padding: 1.5rem;
+      border-radius: 1.2rem;
+      position: absolute;
+      overflow: hidden;
+      background: rgba($color-white, 0.9);
+      top: 1rem;
+      right: 2rem;
+
+      &__wishlist {
+        cursor: pointer;
+        @include flex(row, center, center);
+        width: 2rem;
+        height: 2rem;
+        fill: $color-primary;
+        // background: red;
+        // pointer-events: none;
+      }
+    }
+
+    &__price {
+      color: $color-primary;
+      background: $color-grey-light-1;
+      border-radius: 1rem;
+      max-width: 70%;
+      margin: auto;
+      padding: 1.2rem 2rem;
+      position: relative;
+      top: -4vh;
+      font-size: 1.6rem;
+      @include respond(iPro) {
+        top: -2vh;
+        font-size: 1.8rem;
+      }
+    }
+  }
+  &-content {
+    text-align: center;
+
+    @include flex(column, space-evenly, center);
+    margin: auto;
+    & > *:not(last-child) {
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      line-height: 1.2;
+    }
+  }
+  &-card {
+    @include flex(row, center, center);
+    flex-wrap: wrap;
+    width: 95%;
+    margin: auto;
+    &__data {
+      flex: 0 0 45%;
+      @include flex(row, flex-start, center);
+
+      margin: 0.5rem auto;
+
+      p {
+        // font-size: 1.rem;
+      }
+      svg {
+        margin-right: 0.7rem;
+      }
+      &-icon {
+        height: 2rem;
+        width: 2rem;
+        fill: $color-primary;
+      }
+    }
+  }
+  &-cart {
+    @include flex(row, space-between, center);
+    width: 95%;
+    margin: 1.5rem auto;
+
+    &-rating {
+      color: $color-primary;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.package__reveal {
+  opacity: 0;
+  transition: 0.2s all ease-in;
+  &--visible {
+    opacity: 1;
+  }
+}

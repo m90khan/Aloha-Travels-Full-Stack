@@ -1,0 +1,151 @@
+.plan-settings {
+  max-width: 100% !important;
+}
+.plan-review {
+  border: 1px solid $color-grey-light-3;
+  box-shadow: 0 1rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
+
+  padding: 2rem;
+  border-radius: 2rem;
+  textarea {
+    width: 100% !important;
+  }
+}
+
+.plan {
+  @include flex(row, center, center);
+  min-height: 30vh;
+
+  @include respond(iPro) {
+    @include flex(column, space-evenly, center);
+  }
+  &-image {
+    flex: 0 0 40%;
+    height: 30%;
+    @include flex(row, center, center);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &-content {
+    flex: 0 0 60%;
+    height: 30%;
+    width: 100%;
+  }
+}
+// .package {
+//   flex: 0 0 30%;
+
+//   background: $color-grey-light-1;
+//   padding: 2rem;
+//   border-radius: 2rem;
+//   @include respond(iPro) {
+//     max-height: 45vh;
+//     flex: 0 0 45%;
+
+//     @include flex(column, space-evenly, center);
+//   }
+//   @include respond(iPad) {
+//     max-height: 55vh;
+//   }
+//   @include respond(phone) {
+//     flex: 0 0 90%;
+//     height: 100%;
+//     max-height: 60%;
+//   }
+//   &-header {
+//     margin-bottom: auto;
+//     position: relative;
+//     text-align: center;
+//     &__image {
+//       object-fit: cover;
+//       height: 100%;
+//       width: 100%;
+//     }
+
+//     &-wishicon {
+//       padding: 1.5rem;
+//       border-radius: 1.2rem;
+//       position: absolute;
+//       overflow: hidden;
+//       background: rgba($color-white, 0.9);
+//       top: 1rem;
+//       right: 2rem;
+
+//       &__wishlist {
+//         cursor: pointer;
+//         @include flex(row, center, center);
+//         width: 2rem;
+//         height: 2rem;
+//         fill: $color-primary;
+// background: red;
+// pointer-events: none;
+//   }
+// }
+
+// &__price {
+//   color: $color-primary;
+//   background: $color-grey-light-1;
+//   border-radius: 1rem;
+//   max-width: 50%;
+//   margin: auto;
+//   padding: 1.2rem 2rem;
+//   position: relative;
+//   top: -4vh;
+//   font-size: 1.6rem;
+//   @include respond(iPro) {
+//     top: -2vh;
+//     font-size: 1.8rem;
+//   }
+// }
+// }
+// &-content {
+//   text-align: center;
+
+//   @include flex(column, space-evenly, center);
+//   margin: auto;
+//   & > *:not(last-child) {
+//     margin-bottom: 1.2rem;
+//   }
+
+//   p {
+//     line-height: 1.5;
+//   }
+// }
+// &-card {
+//   @include flex(row, center, center);
+//   flex-wrap: wrap;
+
+//   &__data {
+//     flex: 0 0 45%;
+//     @include flex(row, flex-start, center);
+
+// margin: 0.5rem auto;
+
+// p {
+//   font-size: 1.5rem;
+// }
+// svg {
+//   margin-right: 0.7rem;
+// }
+// &-icon {
+//   height: 2rem;
+//   width: 2rem;
+//   fill: $color-primary;
+// }
+//     }
+//   }
+//   &-cart {
+//     @include flex(row, space-between, center);
+//     width: 90%;
+//     margin: 1.5rem auto;
+
+//     &-rating {
+//       color: $color-primary;
+//       font-size: 1.4rem;
+//     }
+//   }
+// }

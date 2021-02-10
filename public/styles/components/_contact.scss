@@ -1,0 +1,36 @@
+.section-contact {
+  @include flex(row, space-evenly, center);
+  @include centerAuto;
+  a {
+    color: $color-primary;
+    -webkit-text-stroke: 0.2px $color-grey-dark-1;
+  }
+  //   .social {
+  //     flex: 0 0 40%;
+  //     margin: 0 auto;
+  //     justify-self: flex-end;
+  //   }
+  @include respond(phone) {
+    width: 100%;
+  }
+  .contact {
+    flex: 0 0 55%;
+    max-width: 60%;
+    @include respond(iPro) {
+      max-width: 80%;
+      flex: 1;
+      margin: 5rem auto;
+    }
+    @include respond(phone) {
+      max-width: 100%;
+    }
+    input {
+      max-width: 100% !important;
+      width: 100%;
+    }
+    textarea {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}

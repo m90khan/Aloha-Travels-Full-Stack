@@ -1,0 +1,81 @@
+.subscribe {
+  @include centerAuto;
+  @include flex(row, space-evenly, center);
+  padding: 5rem 2rem;
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  width: 83%;
+  flex-wrap: wrap;
+  color: $color-primary;
+  background: linear-gradient(
+    105deg,
+    $color-black 0% 20%,
+    $color-grey-dark-1 50% 75%,
+    $color-black 85% 100%
+  );
+  @include respond(iPad) {
+    order: 2;
+  }
+
+  &-form {
+    @include respond(iPad) {
+      order: 2;
+      flex: 0 1 60rem;
+    }
+    flex: 0 0 35rem;
+    @include flex(column, space-evenly, flex-start);
+    height: 30vh;
+    p {
+      color: $color-white;
+    }
+    svg {
+      display: none;
+    }
+
+    .form {
+      width: 100%;
+      .email {
+        @include flex(row, center, center);
+        background: $color-white;
+        padding: 0 1rem;
+        border-radius: 1rem;
+        @include respond(phone) {
+          padding: 0.2rem 0;
+          padding-left: 1rem;
+        }
+        &__input {
+          padding: 1rem;
+          border: none;
+          width: 100%;
+          &:focus {
+            outline: none;
+          }
+        }
+
+        button {
+          background: $color-primary-dark;
+          border-radius: 1rem;
+          padding: 0.5rem;
+          @include respond(phone) {
+            padding: 1rem;
+            margin-right: 0.2rem;
+          }
+        }
+      }
+    }
+
+    // tour subscription
+  }
+  &-image {
+    .image-sub {
+      text-align: center;
+      &__img {
+        width: 70%;
+        @include respond(iPad) {
+          width: 90%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,304 @@
+.header {
+  @include flex(row, space-evenly, center);
+  @include centerAuto;
+  flex-wrap: wrap;
+  z-index: 100;
+  @include respond(iPro) {
+    overflow-x: hidden;
+  }
+
+  &-logo {
+    flex: 0 0 10%;
+    margin-right: auto;
+    cursor: pointer;
+    z-index: 400;
+
+    img {
+      // background: $color-primary;
+      padding: 1rem;
+      height: 5rem;
+      border-radius: 1rem;
+      margin-right: auto;
+    }
+    @include respond(iPad) {
+      flex: 0 0 20%;
+    }
+    @include respond(phone) {
+      // width: 30%;
+      flex: 0 0 10%;
+
+      background: $color-grey-dark-1;
+      padding: 1rem 1rem;
+      border-radius: 1rem;
+      box-shadow: 1px 10px 10px $color-primary;
+    }
+  }
+  &-menu {
+    flex: 0 0 50%;
+    // @include flex(row, space-evenly, center);
+    // width: 100%;
+
+    @include respond(iPro) {
+      @include flex(column, center, center);
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 200 !important;
+      background: white;
+
+      clip-path: circle(50px at 100% -50%);
+      -webkit-clip-path: circle(50px at 100% -50%);
+
+      // transition: all 0.5s ease-in;
+    }
+    @include respond(iPad) {
+      flex: 0 0 20%;
+    }
+    .navigation {
+      width: 60%;
+      // margin-right: auto;
+      @include respond(iPro) {
+        width: 100%;
+      }
+
+      &-list {
+        @include flex(row, space-evenly, center);
+        @include respond(iPro) {
+          @include flex(column, space-evenly, center);
+        }
+        flex: 1;
+        &__item {
+          &-link {
+            color: $color-grey-light-2;
+            @include respond(iPro) {
+              color: $color-grey-dark-1;
+              font-size: 5rem;
+              line-height: 1.5;
+            }
+            &:hover {
+              color: $color-primary;
+              text-shadow: 2px 2px 4px $color-black;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.mobile-menu {
+  display: flex;
+  // @include flex(row, space-evenly, center);
+  // flex: 0 0 40%;
+  @include respond(iPro) {
+    @include flex(row, center, center);
+    flex: 0 0 55%;
+  }
+  @include respond(iPad) {
+    flex: 0 0 70%;
+  }
+  @include respond(phone) {
+    background: $color-grey-dark-1;
+    position: fixed;
+    bottom: -0.5rem;
+    height: 10vh;
+    width: 100%;
+    z-index: 1100 !important;
+    padding: 0 1rem;
+  }
+
+  .header__burger {
+    display: none;
+    padding: 1rem 1.2rem;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    border: 1px solid $color-primary;
+    text-align: center;
+    @include respond(iPro) {
+      display: flex;
+      flex-direction: column;
+      // flex: 0 0 10%;
+
+      // & > * {
+      //   margin-bottom: 1rem;
+      // }
+    }
+    @include respond(phone) {
+      flex: 0 0 5%;
+      justify-self: flex-end;
+    }
+    &--line1,
+    &--line2 {
+      height: 0.2rem;
+      width: 2rem;
+      background: $color-primary;
+      margin: 0.5rem;
+      pointer-events: none;
+      position: relative;
+    }
+  }
+  .accounts {
+    // flex: 0 0 30%;
+    z-index: 400;
+    margin-left: auto;
+    @include flex(row, space-evenly, center);
+    & > * {
+      margin-right: 1rem;
+    }
+    @include respond(iPro) {
+      flex: 0 0 60%;
+    }
+    @include respond(phone) {
+      flex: 0 0 80%;
+      margin-right: auto;
+      margin-left: 0;
+
+      @include flex(row, flex-start, center);
+    }
+
+    &-profile {
+      margin-left: auto;
+      // flex: 0 0 50%;
+      @include flex(row, flex-start, center);
+      border: 1rem #fff !important;
+      // padding: 1rem 2rem;
+      @include respond(phone) {
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      div {
+        cursor: pointer;
+        margin-left: 1rem;
+        @include respond(phone) {
+          margin: 0 1rem;
+        }
+        @include flex(column, center, flex-start);
+
+        h4 {
+          a {
+            color: $color-primary;
+          }
+        }
+        p {
+          a {
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: $color-grey-light-1;
+          }
+        }
+      }
+      &-menulist {
+        padding: 1rem;
+        border-radius: 1.2rem;
+        cursor: pointer;
+        border: 1px solid $color-primary;
+      }
+      svg {
+        width: 2rem;
+        height: 2rem;
+        fill: $color-primary;
+        pointer-events: none;
+      }
+
+      &-user,
+      &-user:link,
+      &-user:visited {
+        box-shadow: 0 0.2rem 1rem $color-primary !important;
+        border-radius: 5rem;
+        color: $color-primary;
+        text-transform: uppercase;
+        font-size: 1.6rem;
+        text-decoration: none;
+        @include flex(row, center, center);
+        transition: all 0.2s;
+        font-weight: 600;
+        background: none;
+        border: var(--line);
+        cursor: pointer;
+        font-family: inherit;
+        img {
+          box-shadow: 0 0.1rem 0.4rem $color-black !important;
+          height: 4rem;
+          width: 4rem;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    &-wishlist {
+      flex: 0 0 10%;
+      padding: 1rem;
+      border-radius: 1.2rem;
+      cursor: pointer;
+      border: 1px solid $color-primary;
+      @include flex(row, center, center);
+
+      &-logout {
+        background: $color-primary;
+        svg {
+          fill: $color-grey-dark-1;
+        }
+      }
+      &__wishicon {
+        pointer-events: none;
+
+        @include flex(row, center, center);
+        width: 2rem;
+        height: 2rem;
+        fill: $color-primary;
+      }
+    }
+  }
+}
+
+.user-navigation {
+  // display: none;
+
+  position: fixed;
+  width: 100%;
+
+  height: 100%;
+  top: 0%;
+  left: 100%;
+  z-index: 99;
+  background: $color-primary-light;
+  flex: 0 0 50%;
+  @include flex(column, center, center);
+
+  ul {
+    width: 40%;
+    @include respond(phone) {
+      width: 100%;
+    }
+  }
+
+  &-list {
+    @include flex(column, space-evenly, center);
+
+    flex: 1;
+    &__item {
+      &-link {
+        color: $color-grey-light-2;
+        @include respond(iPro) {
+          color: $color-grey-dark-1;
+          font-size: 5rem;
+          line-height: 1.5;
+        }
+        &:hover {
+          color: $color-primary;
+          text-shadow: 2px 2px 4px $color-black;
+        }
+      }
+    }
+  }
+}
+
+.intro {
+  text-align: center;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: 800;
+}

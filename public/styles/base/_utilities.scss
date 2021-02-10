@@ -1,0 +1,49 @@
+.u-tc {
+  text-align: center !important;
+}
+
+.u-mb-2 {
+  margin-bottom: 2rem !important;
+}
+.u-mb-4 {
+  margin-bottom: 4rem !important;
+}
+.u-mb-6 {
+  margin-bottom: 6rem !important;
+}
+.u-mb-8 {
+  margin-bottom: 8rem !important;
+}
+.u-mt-4 {
+  margin-top: 4rem !important;
+}
+.u-mt-6 {
+  margin-top: 6rem !important;
+}
+.u-mt-8 {
+  margin-top: 8rem !important;
+}
+.u-mt-20 {
+  margin-top: 20rem !important;
+}
+.color-primary {
+  color: $color-primary !important;
+}
+.color-black {
+  color: $color-grey-dark-1;
+}
+.bg-black {
+  background: $color-grey-dark-1 !important;
+  color: white !important;
+  margin-top: 10rem;
+  @include respond(iPro) {
+    margin-top: 15rem;
+  }
+  @include respond(iPad) {
+    margin: 15rem 0 4rem 0;
+  }
+}
+
+.secondary-heading {
+  margin-bottom: 1.5rem;
+}

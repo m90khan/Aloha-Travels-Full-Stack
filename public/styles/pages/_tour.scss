@@ -1,0 +1,450 @@
+.section-tour {
+  // position: relative;
+  height: 90vh;
+  background: linear-gradient(
+    to bottom,
+    rgba($color-black, 0.8),
+    rgba($color-primary-dark, 0.4)
+  );
+  overflow: hidden;
+  border-bottom-left-radius: 20rem;
+  border-bottom-right-radius: 20rem;
+  @include respond(phone) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  margin-top: -15vh;
+
+  img {
+    z-index: -1;
+    width: 100%;
+    height: 90;
+    position: relative;
+    position: center center;
+    object-fit: cover;
+  }
+}
+
+.heading-box {
+  color: #f7f7f7;
+  margin-top: 3rem;
+  @include flex(row, center, center);
+  @include respond(phone) {
+    flex-wrap: wrap;
+  }
+  &__detail {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    @include flex(row, center, center);
+    @include respond(phone) {
+      flex: 0 0 100%;
+      justify-content: center;
+      margin-right: auto;
+      margin-bottom: 1rem;
+    }
+    text-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+    svg {
+      margin-right: 0.8rem;
+    }
+  }
+  &__detail:not(:last-child) {
+    margin-right: 4rem;
+  }
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: currentColor;
+    filter: drop-shadow(0 0.75rem 0.5rem rgba(0, 0, 0, 0.25));
+  }
+}
+
+.section-description {
+  min-height: 80vh;
+  max-width: 90%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  @include flex(row, flex-start, center);
+  @include respond(iPro) {
+    height: auto;
+  }
+  @include respond(iPad) {
+    min-height: 70vh;
+    padding: 6rem 0;
+  }
+  @include respond(phone) {
+    min-height: 100vh;
+    padding: 4rem 0;
+  }
+}
+.section-description--about {
+  margin: -10vh auto 0 auto;
+}
+.tour {
+  &-desc {
+    @include flex(column, center, flex-start);
+    flex: 0 0 50%;
+    @include respond(iPro) {
+      flex: 0 0 100%;
+    }
+    @include respond(iPad) {
+      flex: 0 0 100%;
+      width: 90%;
+      margin-bottom: 4rem;
+    }
+    @include respond(phone) {
+      width: 100%;
+    }
+    &__info-box {
+      @include flex(row, flex-start, center);
+      flex-wrap: wrap;
+      flex: 0 0 50%;
+      width: 100%;
+
+      @include respond(iPro) {
+        .package-card__data {
+          margin-bottom: 2rem;
+        }
+      }
+      @include respond(iPad) {
+        flex: 0 0 100%;
+        width: 90%;
+      }
+      .info-guides {
+        @include flex(row, flex-start, center);
+        flex: 0 0 50%;
+        margin-bottom: 1rem;
+        @include respond(iPro) {
+          margin-bottom: 2rem;
+        }
+        &__user {
+          margin: 0.5rem 1rem;
+        }
+        div {
+          h4 {
+            color: $color-primary;
+            font-size: 1.5rem;
+            font-weight: 400;
+            span {
+              color: $color-grey-dark-1;
+              font-weight: 400;
+              display: block;
+            }
+          }
+
+          p {
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+    h1 {
+      display: block;
+      width: 100%;
+    }
+    img {
+      box-shadow: var(--shadow-light);
+      height: 4rem;
+      width: 4rem;
+      border-radius: 50%;
+    }
+    p {
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+  &-text {
+    flex: 0 0 50%;
+    max-width: 80%;
+    line-height: 1.5;
+    @include respond(iPro) {
+      padding: 0rem 2rem;
+      flex: 0 0 100%;
+    }
+    @include respond(iPad) {
+      flex: 0 0 100%;
+      padding: 0rem;
+
+      max-width: 90%;
+    }
+    p:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.section-pictures {
+  @include flex(row, center, center);
+  position: relative;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: 50vh;
+}
+.picture-box {
+  overflow: hidden;
+
+  flex: 1 0 33%;
+  width: 100%;
+  height: 100%;
+
+  @include respond(iPad) {
+    flex: 1 0 50%;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: all 5s ease-in;
+
+    :hover {
+      transform: scale(2);
+    }
+  }
+}
+
+.section-map {
+  position: relative;
+  height: 70vh;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.marker {
+  // background-image: url('../../img/pin.png');
+  background-size: cover;
+  width: 32px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 25rem;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  padding: 1.5rem !important;
+  font-size: 1.4rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.reviews {
+  padding: 5rem 0;
+  display: grid;
+  grid-column-gap: 6rem;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: $color-grey-dark-1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $color-primary;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: $color-primary-light;
+    cursor: pointer;
+  }
+}
+.reviews__card {
+  width: 30rem;
+  padding: 4rem;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  scroll-snap-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.reviews:before,
+.reviews:after {
+  content: '';
+  width: 2rem;
+}
+.reviews__avatar {
+  @include flex(row, center, center);
+  margin-bottom: 2rem;
+}
+.reviews__avatar-img {
+  height: 4.5rem;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+}
+.reviews__user {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.reviews__text {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+  font-weight: 400;
+}
+.reviews__rating {
+  margin-top: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.reviews__star {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 1px;
+}
+.reviews__star--active {
+  fill: $color-primary;
+}
+.reviews__star--inactive {
+  fill: #bbb;
+}
+
+.section-book-tour {
+  min-height: 60vh;
+  @include flex(row, center, center);
+  @include respond(iPro) {
+    min-height: 50vh;
+  }
+  @include respond(phone) {
+    min-height: 80vh;
+  }
+}
+.book {
+  overflow: hidden;
+  position: relative;
+  height: 40vh;
+  border-radius: 2rem;
+
+  width: 80%;
+  @include centerAuto;
+  @include flex(row, center, center);
+  padding: 5rem 2rem;
+  background: linear-gradient(
+    105deg,
+    $color-grey-dark-1 0% 30%,
+    $color-black 60% 100%
+  );
+  flex-wrap: wrap;
+  @include respond(iPro) {
+    height: 25vh;
+  }
+  @include respond(iPad) {
+    height: 30vh;
+  }
+  @include respond(phone) {
+    height: 45vh;
+  }
+
+  &-tour {
+    flex: 0 0 45%;
+    @include respond(iPro) {
+      flex: 0 0 80%;
+    }
+
+    margin-left: auto;
+    @include respond(phone) {
+      flex: 0 0 100%;
+      margin-left: 0;
+      text-align: center;
+      padding: 0 1rem;
+      margin-top: 2rem;
+    }
+    h3 {
+      color: $color-primary;
+    }
+    p {
+      color: $color-grey-light-1;
+    }
+
+    &__img {
+      height: 15rem;
+      width: 15rem;
+      position: absolute;
+      top: 15%;
+      left: -1%;
+      @include respond(phone) {
+        top: 2%;
+        left: 40%;
+        height: 8rem;
+        width: 8rem;
+      }
+      border-radius: 50%;
+      -webkit-box-shadow: 1rem 0.5rem 3rem rgba(0, 0, 0, 0.15);
+      box-shadow: 1rem 0.5rem 3rem rgba(0, 0, 0, 0.15);
+
+      &--logo {
+        padding: 2rem;
+        @include flex(row, center, center);
+
+        background: linear-gradient(
+          to right bottom,
+          $color-black,
+          $color-primary
+        );
+        z-index: 10;
+        transform: translate(-20%, -20%);
+        @include respond(phone) {
+          transform: translate(-40%, -45%);
+        }
+      }
+      &--logo img {
+        width: 100%;
+      }
+      &--1 {
+        transform: translate(-20%, 25%) scale(0.97);
+        z-index: 9;
+        @include respond(phone) {
+          transform: translate(10%, -35%) scale(0.97);
+        }
+      }
+      &--2 {
+        transform: translate(-20%, 55%) scale(0.9);
+        z-index: 8;
+        @include respond(phone) {
+          transform: translate(60%, -40%) scale(0.9);
+        }
+      }
+    }
+  }
+  &-cta {
+    flex: 0 0 40%;
+    @include respond(iPro) {
+      flex: 0 0 80%;
+      text-align: center;
+    }
+    @include respond(phone) {
+      flex: 0 0 100%;
+    }
+    a {
+      @include respond(phone) {
+        padding: 1rem 3rem;
+      }
+    }
+  }
+}

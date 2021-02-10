@@ -1,0 +1,128 @@
+.section-onboard {
+  background: linear-gradient(to bottom, $color-black, $color-grey-dark-1);
+  //   background: url(../img/img/hero-ipad.png);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 299;
+  @include flex(row, center, center);
+  display: none;
+}
+
+.screen-window {
+  border-radius: 1rem;
+  border: 0.5rem solid $color-primary;
+  width: 40rem;
+
+  height: 90vh;
+  overflow: hidden;
+  @include flex(column, center, center);
+  background: $color-grey-dark-1;
+  position: relative;
+  @media only screen and (min-width: 1600px) {
+    width: 55rem;
+  }
+  @include respond(iPro) {
+    height: 57%;
+    width: 50rem;
+  }
+  @include respond(iPad) {
+    height: 80vh;
+  }
+  @include respond(phone) {
+    height: 100vh;
+    width: 100%;
+  }
+}
+.board {
+  //   border-radius: 1rem;
+  //   border: 0.5rem solid $color-primary-light;
+  //   width: 40rem;
+  height: 90vh;
+  width: 100%;
+  //   overflow: hidden;
+  @include flex(column, center, center);
+  background: #ffe8b5;
+  position: relative;
+  @include respond(iPro) {
+    height: 57vh;
+    max-width: 50rem;
+  }
+  @include respond(iPad) {
+    height: 80vh;
+  }
+  @include respond(phone) {
+    height: 100vh;
+    max-width: 100%;
+  }
+  &-1 {
+    display: none;
+  }
+  &-2 {
+    display: none;
+  }
+  &-3 {
+    display: none;
+  }
+  &-image {
+    width: 100%;
+    height: 60%;
+    object-fit: contain;
+    // position: absolute;
+  }
+  &-screen {
+    height: 40%;
+    .feature {
+      height: 100%;
+      border-radius: 0;
+      border-top-left-radius: 3rem;
+      border-top-right-radius: 3rem;
+    }
+    p {
+      max-width: 90%;
+      padding: 1rem 0;
+    }
+  }
+
+  .skip-text {
+    font-size: 2rem;
+    color: $color-grey-dark-1;
+
+    &-intro {
+      cursor: pointer;
+      &:hover {
+        color: $color-black;
+      }
+    }
+  }
+}
+
+.board-welcome {
+  background: $color-primary-light;
+  @include flex(column, space-evenly, center);
+  height: 100%;
+  &-title {
+    text-shadow: 1px 0.5px 3px $color-grey-dark-1,
+      1px 1.5px 5px $color-grey-dark-1;
+    color: $color-grey-dark-1;
+  }
+  &-heading {
+    position: absolute;
+    z-index: 800;
+  }
+
+  &-screen {
+    width: 100%;
+    height: 50%;
+    background: $color-grey-dark-1;
+    position: absolute;
+    left: 0;
+    &-1 {
+      top: 0;
+    }
+    &-2 {
+      top: 50%;
+    }
+  }
+}

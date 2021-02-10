@@ -1,0 +1,115 @@
+.footer {
+  @include flex(row, space-between, center);
+  @include centerAuto;
+  flex-wrap: wrap;
+  position: relative;
+  &-text {
+    flex: 0 0 40rem;
+    margin-top: 2rem;
+    @include respond(iPro) {
+      flex: 1 0 100%;
+    }
+    @include flex(column, center, space-between);
+    p {
+      line-height: 1.5;
+      padding-top: 0rem;
+    }
+    h4 {
+      margin-top: 2rem;
+      line-height: 1.5;
+    }
+    &-apps {
+      margin-top: 1rem;
+      & > *:not(:last-child) {
+        margin-right: 2rem;
+      }
+
+      img {
+        width: 30%;
+
+        @include respond(phone) {
+          width: 40%;
+        }
+      }
+    }
+  }
+
+  &-links {
+    flex: 0.9 0 40rem;
+    align-self: flex-start;
+    margin-top: 4rem;
+    @include respond(iPro) {
+      flex: 1 0 50%;
+    }
+    &-scrollbtn {
+      position: absolute;
+      top: -7rem;
+      right: 2rem;
+      padding: 1rem;
+      border-radius: 2rem;
+      border: none;
+      background: $color-grey-dark-1;
+      cursor: pointer;
+      svg {
+        height: 3rem;
+        width: 3rem;
+        fill: $color-primary;
+        pointer-events: none;
+      }
+    }
+
+    &-nav {
+      @include flex(row, space-evenly, flex-start);
+      flex-wrap: wrap;
+      &__list {
+        flex: 1 1 15rem;
+
+        @include respond(iPro) {
+          padding: 0 1rem;
+          &:not(:last-child) {
+            margin-right: 1.5rem;
+            margin-bottom: 1.5rem;
+          }
+        }
+        @include respond(phone) {
+          flex: 1 1 55rem;
+        }
+        &-item {
+          color: $color-grey-dark-1;
+          font-size: 1.4rem;
+          @include respond(iPro) {
+            font-size: 1.8rem;
+          }
+          @include respond(iPad) {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.copyright {
+  text-align: center;
+  padding: 2rem 0 0;
+  font-size: 1.4rem;
+}
+
+.cities-image {
+  @include flex(row, center, center);
+  position: relative;
+  margin: 0 auto;
+  top: 2rem;
+  img {
+    @include respond(iPro) {
+      width: 80%;
+    }
+  }
+  @include respond(phone) {
+    display: none;
+  }
+}
+
+.fixed-header {
+  position: fixed !important;
+}
