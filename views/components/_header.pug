@@ -1,0 +1,70 @@
+mixin navItem(link, text, icon, active)
+    li(class=`side-nav__item ${active ? 'side-nav__item--active' : ''}`)
+        a.side-nav__link.loader-btn(href=`${link}`)
+            svg.side-nav__icon
+                use(xlink:href=`img/icons.svg#icon-${icon}`)
+            span #{text}
+
+header(class=`section-header ${user ? 'section-header--background': 'section-header--transparent'}`)
+    .header
+        .header-logo
+            a.loader-btn(href='/')
+                img(src='/img/svg/logo.svg' alt='logo')
+        .header-menu
+            nav.navigation
+                ul.navigation-list
+                    li.navigation-list__item
+                        a.navigation-list__item-link.loader-btn(href='/') Home
+                    li.navigation-list__item
+                        a.navigation-list__item-link.loader-btn(href='/all-tours') All tours
+                    //- li.navigation-list__item
+                    //-     a.navigation-list__item-link(href='/blogs') Blog
+                    li.navigation-list__item
+                        a.navigation-list__item-link.loader-btn(href='/gallery-aloha') Gallery
+                    li.navigation-list__item
+                        a.navigation-list__item-link.loader-btn(href='/about-aloha') About
+                    li.navigation-list__item
+                        a.navigation-list__item-link.loader-btn(href='/contact-aloha') Contact
+        .mobile-menu
+            .accounts
+                if user
+                    .accounts-profile
+                        a(href='/me').accounts-profile-user
+                            img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
+                        div
+                            h4: a(href='/me' style='font-weight: 600')= user.name.split(' ')[0]
+                            p: a(href='/me')= user.email
+                        .accounts-profile-menulist
+                            svg.accounts-profile-menu
+                                use(xlink:href='/img/icons/sprite.svg#icon-airplane')
+                    a.logout-btn.accounts-wishlist.accounts-wishlist-logout                        
+                        svg.accounts-wishlist__wishicon.accounts-wishlist__wishicon--active
+                            use(xlink:href='/img/icons/sprite.svg#icon-switch')                                
+                    //- a.accounts-wishlist-itemsMenu.accounts-wishlist                        
+                    //-     svg.accounts-wishlist__wishicon.accounts-wishlist__wishicon--active
+                    //-         use(xlink:href='/img/icons/sprite.svg#icon-heart')
+                else
+                    a.btn.btn--secondary.loader-btn(href='/signup') Sign up
+                    a.btn.btn--primary.loader-btn(href='/login') Log in
+            .header__burger
+                .header__burger--line1
+                .header__burger--line2
+//- .wish#wish
+//-     .wish-menu
+//-         h1 Wish List
+
+if user
+    .user-navigation
+        ul.side-nav
+            h1.side-nav__text.u-mb-4 Welcome
+            +navItem('/me', 'Settings', 'settings', true)
+            +navItem('/my-tours', 'My bookings', 'briefcase')
+            +navItem('/my-reviews', 'My reviews', 'star')
+            +navItem('/billing-details', 'Billing', 'credit-card')
+        - if (user.role === 'admin')
+            ul.side-nav
+                h1.side-nav__text.u-mt-2 Admin
+                +navItem('#', 'Manage tours', 'map')
+                +navItem('#', 'Manage users', 'users')
+                +navItem('#', 'Manage reviews', 'star')
+                +navItem('#', 'Manage bookings', 'briefcase')

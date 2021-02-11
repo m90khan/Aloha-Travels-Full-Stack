@@ -1,0 +1,21 @@
+extends base
+
+block content 
+    section.section-tour
+        img.hero-image(src=`/img/tours/${blog.imageCover}`, alt=`${blog.title}`)
+        .hero-content
+            h2.hero-content__heading= `${blog.title} tour`
+            //- p.hero-content__subheading= tour.description            
+            .heading-box.u-mb-4
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/img/icons.svg#icon-clock')
+                    h5= `${blog.createdAt.toLocaleString('en-us', {day:'numeric',month: 'long', year: 'numeric'})}`
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/img/icons.svg#icon-map-pin')
+                    h5.heading-box__text= `${blog.slug}`
+    section.section-description
+        .tour-text
+            h1.u-mb-4= `About ${blog.title} tour`
+                p= `${JSON.parse(blog.body)}`

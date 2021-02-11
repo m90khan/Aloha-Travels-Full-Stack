@@ -1,0 +1,90 @@
+extends base
+
+include components/_reviewCard
+
+block append head
+    script( src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js') 
+    link(href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet')
+
+mixin overviewBox(label, text, icon)
+    .package-card__data
+        svg.package-card__data-icon
+            use(xlink:href=`/img/icons.svg#icon-${icon}`)
+        p
+            span= `${label} :`
+            span=`${text}`  
+
+block content 
+    section.section-tour
+        img.hero-image(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name}`)
+        .hero-content
+            h2.hero-content__heading= `${tour.name} tour`
+            //- p.hero-content__subheading= tour.description            
+            .heading-box.u-mb-4
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/img/icons.svg#icon-clock')
+                    h5= `${tour.duration} days`
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/img/icons.svg#icon-map-pin')
+                    h5.heading-box__text= `${tour.startLocation.description}`
+            if user
+                a.btn.btn--primary.btn--primary-large(data-tour-id=`${tour.id}` href='#book-tour' ) Book tour now!
+            else
+                a.btn.btn--primary.btn--primary-large(href='/login') Log in to book tour 
+    section.section-description
+        .tour-desc
+            h1.u-mb-2 Details
+            .tour-desc__info-box
+                +overviewBox('Next Date', `${tour.startDates[0].toLocaleString('en-us', {month: 'long', year: 'numeric'})}` , 'calendar')
+                +overviewBox('Difficulty', tour.difficulty, 'trending-up')
+                +overviewBox('Participants', `${tour.maxGroupSize}`, 'user')
+                +overviewBox('Rating', `${tour.ratingsAverage} / 5`, 'star')
+            h1.u-mt-4.u-mb-2 Tour Guides
+            .tour-desc__info-box
+                each guide in tour.guides
+                    .info-guides
+                        a(href='/me').info-guides__user
+                            img.info-guides__img(src=`/img/users/${guide.photo}`, alt=`${guide.name}`)
+                        div
+                            h4
+                                - if(guide.role === 'lead-guide')
+                                    span Lead guide 
+                                - if(guide.role === 'guide')
+                                    span Tour guide 
+                                = `${guide.name}`
+                            //- p(href='/me')= user.email  
+        .tour-text
+            h1.u-mb-4= `About ${tour.name} tour`
+            - const paragraphs = tour.description.split('\n');
+            each p in paragraphs
+                p= `${p}` 
+
+    section.section-pictures
+        each img, i in tour.images
+            .picture-box
+                img.picture-box__img(src=`/img/tours/${img}`, alt=`The Park Camper Tour ${i+1}`, class=`picture-box__img--${i+1}`)
+
+
+    section.section-map
+        #map(data-locations=`${JSON.stringify(tour.locations)}`)
+
+    section.section-reviews
+        .reviews
+            each review in tour.reviews
+                +reviewCard(review)
+    .section-book-tour
+        .book
+            .book-tour
+                .book-tour__img.book-tour__img--logo
+                    img(src='/img/logo-aloha.png', alt='Natours logo')
+                img.book-tour__img.book-tour__img--1(src=`/img/tours/${tour.images[1]}`, alt=`tour ${tour.name}`)
+                img.book-tour__img.book-tour__img--2(src=`/img/tours/${tour.images[2]}`, alt=`tour ${tour.name}`)
+                h3.secondary-heading What are you waiting for?              
+                p.desc-text= `${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`              
+            .book-cta
+                if user
+                    button.btn.btn--primary.btn--primary-large#book-tour(data-tour-id=`${tour.id}`) Book tour now!
+                else
+                    a.btn.btn--primary.btn--primary-large(href='/login') Log in to book tour

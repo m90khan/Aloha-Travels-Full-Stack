@@ -1,0 +1,35 @@
+extends base
+
+//- mixin navItem(link, text, icon, active)
+//-     li(class=`side-nav__item ${active ? 'side-nav__item--active' : ''}`)
+//-         a.side-nav__link(href=`${link}`)
+//-             svg.side-nav__icon
+//-                 use(xlink:href=`img/icons.svg#icon-${icon}`)
+//-             span #{text}
+
+block content
+    section.section-account
+        .content
+            include dashboard/_sidebar
+            //- form.form.form-user-data(action='/submit-user-data' method='POST' enctype='multipart/form-data')
+            .content-settings
+                .content-settings__form.plan-settings
+                    h1.heading-primary.u-mb-4 My reviews
+                    .section-review          
+                        each review in reviews
+                            .review
+                                .review__card
+                                    img.review__card-avatar__img(src=`/img/users/${review.user.photo}`, alt=`${review.user.name}`)
+                                .review__content
+                                    h4.review__card-user= review.user.name
+                                    h4.review__card-user= `Tour: ${review.tour.name}`                                    
+                                    p.review__card-text= review.review
+                                    .review__rating
+                                        each star in [1,2,3,4,5]
+                                            svg.review__rating-star(class=`review__rating-star--${review.rating >= star ? 'active': 'inactive'}`)
+                                                use(xlink:href='/img/icons.svg#icon-star')
+                                    .review__content-btns
+                                        a.btn.btn--tertiary#delete-review-btn(data-review-id=`${review._id}`) delete      
+                                        a.btn.btn--tertiary#delete-review-btn(data-review-id=`${review._id}`) edit      
+                include components/_account-menu
+

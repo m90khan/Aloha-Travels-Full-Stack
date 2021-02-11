@@ -1,0 +1,30 @@
+doctype html
+html
+    head
+        block head
+            meta(charset='UTF-8')
+            meta( name='viewport' content='width=device-width, initial-scale=1.0')
+            link(rel='stylesheet' href='/js/scripts/bundle.css')
+            link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+            title Aloha | #{title}
+ 
+    body
+        // Header
+        include components/_loader
+        include components/_header
+
+        // Content
+        block content
+            h1 Overview TOURS
+
+        // Footer
+        block footer
+            include components/_footer
+        .cursor
+            img(src='/img/svg/cursor-logo.svg' alt='logo')
+            .cursor__text.cursor__text--1
+            .cursor__text.cursor__text--2
+        script(src='https://js.stripe.com/v3/')   
+        script(src='/js/scripts/bundle.js')
+        //- script(src='/js/scripts/scrooth.js')
+        //- script(src='/js/login.js')

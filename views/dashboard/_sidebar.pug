@@ -1,0 +1,16 @@
+nav.sidebar
+    h1.side-nav__text.u-mt-8 Welcome
+    ul.side-nav
+        +navItem('/me', 'Settings', 'settings')
+        +navItem('/my-tours', 'My bookings', 'briefcase')
+        +navItem('/my-reviews', 'My reviews', 'star')
+        +navItem('/billing-details', 'Billing', 'credit-card')
+    - if (user.role === 'admin')
+        h1.side-nav__text.u-mt-8 Admin
+        ul.side-nav
+            +navItem('#', 'Manage tours', 'map')
+            +navItem('#', 'Manage users', 'users')
+            +navItem('#', 'Manage reviews', 'star')
+            +navItem('#', 'Manage bookings', 'briefcase')            
+    .legal
+        p.side-nav__text.u-mt-8= `© ${new Date().getUTCFullYear()}. All rights reserved.`

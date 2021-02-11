@@ -1,0 +1,100 @@
+extends base
+    
+block content
+    .section-tours
+        .tour
+            .tour-heading.u-mt-8
+                h1.tour-heading__secondary.color-primary My Booked Tours
+            .tour-packages
+
+//- mixin navItem(link, text, icon, active)
+//-     li(class=`side-nav__item ${active ? 'side-nav__item--active' : ''}`)
+//-         a.side-nav__link(href=`${link}`)
+//-             svg.side-nav__icon
+//-                 use(xlink:href=`img/icons.svg#icon-${icon}`)
+//-             span #{text}
+
+block content
+    section.section-account
+        .content
+            include dashboard/_sidebar
+            //- form.form.form-user-data(action='/submit-user-data' method='POST' enctype='multipart/form-data')
+            .content-settings
+                .content-settings__form.plan-settings
+                    h1.heading-primary.u-mb-4 My Bookings
+                    each tour in tours
+                        .plan-review
+                            .plan
+                                .plan-image
+                                    picture
+                                        img.lazyload(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name}`)
+                                .plan-content
+                                    .package-content
+                                        h4.secondary-heading= tour.name
+                                        p.color-primary= `$${tour.price} / person`
+                                        p.desc-text.u-mb-2= tour.summary
+                                    .package-card
+                                        .package-card__data
+                                                svg.package-card__data-icon
+                                                    use(xlink:href='/img/icons.svg#icon-map-pin')
+                                                p= tour.startLocation.description
+                                        .package-card__data
+                                                svg.package-card__data-icon
+                                                    use(xlink:href='/img/icons.svg#icon-calendar')
+                                                p= tour.startDates[0].toLocaleString('en-us', {month: 'long', year: 'numeric'})
+                                        .package-card__data
+                                                svg.package-card__data-icon
+                                                    use(xlink:href='/img/icons.svg#icon-flag')
+                                                p= `${tour.locations.length} stops`
+                                        .package-card__data
+                                                svg.package-card__data-icon
+                                                    use(xlink:href='/img/icons.svg#icon-user')
+                                                p= `${tour.maxGroupSize} people`
+                                    .package-cart
+                                        h6.package-cart-rating= `${tour.ratingsAverage} rating (${tour.ratingsQuantity})`
+                                        a.btn.btn--tertiary(href=`/tour/${tour.slug}`) Details
+                            form.form.form-tour-review
+                                .form__group.u-mb-2    
+                                    label.form__label(for='content') Submit Review
+                                    textarea.review-text.form__input(type='text', data-tour-id=`${tour._id}` placeholder='Review', required, rows='4' cols='50' autocomplete)
+                                .form__group.review-number
+                                    p Rating: 
+                                    p.review-number__rating(for='rating') 4.5
+                                    input.review-number__slider.form__input(type='range', value= '5' min= '1' max='5')
+                                .form__group.u-mt-2
+                                    button.btn.btn--tertiary.review-submit-btn(data-user-id=`${user._id}`) Submit Review
+
+                    //- .package
+                    //-     .package-header
+                    //-         picture
+                    //-             img.lazyload.package-header__image(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name}`)
+                    //-         //- .package-header-wishicon
+                    //-         //-     a#addtowishlist
+                    //-         //-         svg.package-header-wishicon__wishlist.package-header__wishlist--active
+                    //-         //-             use(xlink:href='/img/icons/sprite.svg#icon-heart')
+                    //-         h6.package-header__price= `$${tour.price} / person`
+                    //-     .package-content
+                    //-         h4.secondary-heading= tour.name
+                    //-         p.desc-text.u-mb-2= tour.summary
+                    //-     .package-card
+                    //-         .package-card__data
+                    //-                 svg.package-card__data-icon
+                    //-                     use(xlink:href='/img/icons.svg#icon-map-pin')
+                    //-                 p= tour.startLocation.description
+                    //-         .package-card__data
+                    //-                 svg.package-card__data-icon
+                    //-                     use(xlink:href='/img/icons.svg#icon-calendar')
+                    //-                 p= tour.startDates[0].toLocaleString('en-us', {month: 'long', year: 'numeric'})
+                    //-         .package-card__data
+                    //-                 svg.package-card__data-icon
+                    //-                     use(xlink:href='/img/icons.svg#icon-flag')
+                    //-                 p= `${tour.locations.length} stops`
+                    //-         .package-card__data
+                    //-                 svg.package-card__data-icon
+                    //-                     use(xlink:href='/img/icons.svg#icon-user')
+                    //-                 p= `${tour.maxGroupSize} people`
+                    //-     .package-cart
+                    //-         h6.package-cart-rating= `${tour.ratingsAverage} rating (${tour.ratingsQuantity})`
+                    //-         a.btn.btn--tertiary(href=`/tour/${tour.slug}`) Details 
+                include components/_account-menu
+

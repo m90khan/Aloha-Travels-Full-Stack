@@ -1,0 +1,22 @@
+extends base
+
+block content
+    .login-form
+        h3.u-mb-4 Create Account
+        form.form.create-account
+            .form__group
+                label.form__label(for='name') Name
+                input#new-name.form__input(type='text', placeholder='Jon Smith', required)
+            .form__group
+                label.form__label(for='email') Email address
+                input#new-email.form__input(type='email', placeholder='you@example.com', required)
+            .form__group   
+                label.form__label(for='password') Password
+                input#new-password.form__input(type='password', placeholder='••••••••', required, minlength='8' autocomplete)
+            .form__group  
+                label.form__label(for='password') Confirm Password
+                input#new-password-confirm.form__input(type='password', placeholder='••••••••', required, minlength='8' autocomplete)
+            .form__group
+                button.btn.btn--primary.sign-up-btn Sign up
+            .form__group
+                a.color-black(href='/login') Already have a account? Log in

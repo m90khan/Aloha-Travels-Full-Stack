@@ -1,0 +1,42 @@
+.cities-image
+    img(src='/img/svg/cities.svg' alt='')
+footer.section-footer
+
+    .footer
+        .footer-text
+            h4.secondary-heading Aloha Travels brings exciting new tours.
+            p.desc-text Discover unique experiences on ranches, nature preserves, farms, vineyards, food streets, sport packages and public camping grounds across the U.S. Book complete tour packages including camping, treehouses, cabins, national parks, car camping and more.
+            h4.secondary-heading Download Our App
+            .footer-text-apps
+                picture
+                    img(sizes='147px' srcset='/img/frontend/app-store-apple.png 147w, /img/frontend/app-store-apple-2x.png 294w\ ' alt='download app store apple')
+                picture
+                    img(sizes='147px' srcset='/img/frontend/app-store-google.png 147w, /img/frontend/app-store-google.png 294w' alt='download app store google')
+        .footer-links
+            button.footer-links-scrollbtn
+                svg.footer-links__scrolltop
+                    use(xlink:href='/img/icons/sprite.svg#icon-arrow-up2')
+            nav.footer-links-nav
+                ul.footer-links-nav__list
+                    h4.secondary-heading Get to Know Us
+                    li: a.footer-links-nav__list-item(href='#') About Us 
+                    li: a.footer-links-nav__list-item(href='#') Rules &amp; Reservation 
+                    li: a.footer-links-nav__list-item(href='#') Accessibility
+                    li: a.footer-links-nav__list-item(href='#') Media Center 
+                    li: a.footer-links-nav__list-item(href='#') Site Map 
+                ul.footer-links-nav__list
+                    h4.secondary-heading Plan with Us
+                    li: a.footer-links-nav__list-item(href='#') Find Trip Inspiration 
+                    li: a.footer-links-nav__list-item(href='#') Build a Trip 
+                    li: a.footer-links-nav__list-item(href='#') Buy a Pass 
+                    li: a.footer-links-nav__list-item(href='#') Enter a Lottery 
+                ul.footer-links-nav__list
+                    h4.secondary-heading Let Us Help You
+                    li: a.footer-links-nav__list-item(href='#') Your Account 
+                    li: a.footer-links-nav__list-item(href='#') Your Reservations 
+                    li: a.footer-links-nav__list-item(href='#') Contact Us 
+                    li: a.footer-links-nav__list-item(href='#') Help Center 
+                    li: a.footer-links-nav__list-item(href='#') Submit Feedback
+    .copyright
+        - const date = new Date()
+            p.desc-text= `© ${date.getUTCFullYear()}. All rights reserved.`

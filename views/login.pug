@@ -1,0 +1,21 @@
+extends base
+
+block content
+    if !user
+        .login-form
+            h3.u-mb-4 Log into your account
+            form.form.login-account
+                .form__group
+                    label.form__label(for='email') Email address
+                    input#loginemail.form__input(type='email', placeholder='email@example.com', required)
+                .form__group.u-mb-4
+                    label.form__label(for='password') Password
+                    input#loginpassword.form__input(type='password', placeholder='••••••••', required, minlength='8' autocomplete)
+                .form__group.u-mt-4
+                    button.btn.btn--primary.login-btn Log in
+                .form__group
+                    a.color-black(href='/forgot-password') Forgot Password?
+    else
+        .login-form
+            h3.u-mb-4 This route is not for logged in users
+            

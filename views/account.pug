@@ -1,0 +1,54 @@
+extends base
+
+//- mixin navItem(link, text, icon, active)
+//-     li(class=`side-nav__item ${active ? 'side-nav__item--active' : ''}`)
+//-         a.side-nav__link(href=`${link}`)
+//-             svg.side-nav__icon
+//-                 use(xlink:href=`img/icons.svg#icon-${icon}`)
+//-             span #{text}
+
+block content
+    section.section-account
+        .content
+            include dashboard/_sidebar
+            //- form.form.form-user-data(action='/submit-user-data' method='POST' enctype='multipart/form-data')
+            .content-settings
+                .content-settings__form.plan-settings
+                    h1.heading-primary.u-mb-4 Acount settings
+                    form.form.form-user-data
+                        .form__group
+                            label.form__label(for='name') Name
+                            input#name.form__input(type='text', value=`${user.name}`, required, name='name')
+                        .form__group
+                            label.form__label(for='email') Email address
+                            input#email.form__input(type='email', value=`${user.email}`, required, name='email')
+                        .form__group.form__group--upload
+                            img.form__group-user__photo(src=`/img/users/${user.photo}`, alt='User photo')
+                            input.form__group-user__upload(type='file', accept='image/*', id='photo' name='photo')
+                            label.form__group-user__label(for='photo') Upload new photo
+                            svg.package-card__data-icon
+                                use(xlink:href='/img/icons/sprite.svg#icon-arrow-up2')
+                                
+                        .form__group
+                            button.btn.btn--tertiary.btn--green Save settings
+              
+                .line &nbsp;
+        
+                .content-settings__form.plan-settings
+                    h1.heading-primary.u-mb-4.u-mt-4 Change Password
+                    form.form.form-user-password
+                        .form__group
+                            label.form__label(for='password-current') Current password
+                            input#password-current.form__input(type='password', placeholder='••••••••', required, minlength='8' autocomplete="on")
+                        .form__group
+                            label.form__label(for='password') New password
+                            input#password.form__input(type='password', placeholder='••••••••', required, minlength='8' autocomplete="on")
+                        .form__group.ma-bt-lg
+                            label.form__label(for='password-confirm') Confirm password
+                            input#password-confirm.form__input(type='password', placeholder='••••••••', required, minlength='8' autocomplete="on")
+                        .form__group.right
+                            button.btn.btn--tertiary.btn--green.btn--save-password Save password
+                include components/_account-menu
+            //- div
+            //-     .account__burger--line.account__burger--line1
+            //-     .account__burger--line.account__burger--line2

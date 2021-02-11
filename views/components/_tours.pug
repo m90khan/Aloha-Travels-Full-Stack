@@ -1,0 +1,34 @@
+.tour-packages#tours-section
+        each tour in tours
+            .package
+                .package-header
+                    picture
+                        img.lazyload.package-header__image(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name}`)
+                    //- .package-header-wishicon
+                    //-     a#addtowishlist
+                    //-         svg.package-header-wishicon__wishlist.package-header__wishlist--active
+                    //-             use(xlink:href='/img/icons/sprite.svg#icon-heart')
+                    h6.package-header__price= `$${tour.price} / person`
+                .package-content
+                    h4.secondary-heading= tour.name
+                    p.desc-text.u-mb-2= `${tour.summary.slice(0,70)}...`
+                .package-card
+                    .package-card__data
+                            svg.package-card__data-icon
+                                use(xlink:href='/img/icons.svg#icon-map-pin')
+                            p= tour.startLocation.description
+                    .package-card__data
+                            svg.package-card__data-icon
+                                use(xlink:href='/img/icons.svg#icon-calendar')
+                            p= tour.startDates[0].toLocaleString('en-us', {month: 'long', year: 'numeric'})
+                    .package-card__data
+                            svg.package-card__data-icon
+                                use(xlink:href='/img/icons.svg#icon-flag')
+                            p= `${tour.locations.length} stops`
+                    .package-card__data
+                            svg.package-card__data-icon
+                                use(xlink:href='/img/icons.svg#icon-user')
+                            p= `${tour.maxGroupSize} people`
+                .package-cart
+                    h6.package-cart-rating= `${tour.ratingsAverage} rating (${tour.ratingsQuantity})`
+                    a.btn.btn--tertiary(href=`/tour/${tour.slug}`) Details 

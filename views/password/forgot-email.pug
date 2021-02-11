@@ -1,0 +1,11 @@
+extends ../base
+
+block content
+    .login-form
+        h3.u-mb-4 Please enter your account email
+        form.form.forgot-email
+            .form__group
+                label.form__label(for='email') Email address
+                input#forgotpass.form__input(type='email', placeholder='email@example.com', required)
+            .form__group.u-mt-4
+                button.btn.btn--primary.login-btn Submit Request

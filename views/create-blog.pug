@@ -1,0 +1,26 @@
+extends base
+
+block append head
+    link(href='https://cdn.quilljs.com/1.3.6/quill.snow.css' rel='stylesheet')
+    script(src='https://cdn.quilljs.com/1.3.6/quill.js')
+
+block content
+    section.section-account
+        .content
+            .content-settings
+                .content-settings__form
+                    h3.heading-primary.u-mb-4 Create Post
+                    form.form.form-create-post
+                        //- .form__group.form__group--upload
+                        //-     input.form__group-user__upload#postPhoto(type='file', accept='image/*', name='postPhoto')
+                        //-     label.form__group-user__label(for='postPhoto') Upload new photo
+                        .form__group
+                            label.form__label(for='title') Post Title
+                            input#postTitle.form__input(type='text', name='title')
+                        #editor
+                            .form__group.form__group-blog
+                                textarea#postBody.form__input(type='text', name='body')     
+                        .form__group.u-mt-4
+                            button.btn.btn--primary Save settings
+//- block append footer
+//-     script.

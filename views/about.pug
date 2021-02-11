@@ -1,0 +1,78 @@
+extends base
+
+mixin overviewBox(label, text, icon)
+    .package-card__data
+        svg.package-card__data-icon
+            use(xlink:href=`/img/icons.svg#icon-${icon}`)
+        p
+            span= `${label} :`
+            span=`${text}`  
+
+block content 
+    section.section-tours
+        .header-tour
+        img.hero-image(src=`/img/tours/tour-1-1.jpg`, alt=``)
+        .hero-content
+            h2.hero-content__heading About Aloha Travels.
+            //- p.hero-content__subheading= tour.description            
+            .heading-box.u-mb-4
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/img/icons.svg#icon-clock')
+                    h5= `08:00 - 16:00 Monday-Friday`
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/img/icons.svg#icon-map-pin')
+                    h5.heading-box__text= `United States`
+    section.section-description.section-description--about 
+        .tour-desc
+            h1.u-mb-2 Services
+            .tour-desc__info-box
+                +overviewBox('Camping Tours', 'USA' , 'star')
+                +overviewBox('City Tours', 'USA', 'star')
+                +overviewBox('7 Wonders','World wide', 'star')
+                +overviewBox('Sports', 'USA', 'star')
+            h1.u-mt-4.u-mb-2 Team
+            .tour-desc__info-box
+                .info-guides
+                    a(href='').info-guides__user
+                        img.info-guides__img(src=`/img/users/user-5.jpg`, alt=`ceo`)
+                    div: h4 CEO
+                        span Christian smith
+                .info-guides
+                    a(href='').info-guides__user
+                        img.info-guides__img(src=`/img/users/user-10.jpg`, alt=`ceo`)
+                    div: h4 Office Manager
+                        span Jermine Wallace 
+            .tour-desc__info-box
+                .info-guides
+                    a(href='').info-guides__user
+                        img.info-guides__img(src=`/img/users/user-6.jpg`, alt=`ceo`)
+                    div: h4 Travel Manager
+                        span Caroline Davis 
+                .info-guides
+                    a(href='').info-guides__user
+                        img.info-guides__img(src=`/img/users/user-8.jpg`, alt=`ceo`)
+                    div: h4 Web Developer
+                        span Alina Morel 
+        .tour-text
+            h1.u-mb-4 About
+                p We are a main travel organization in America giving a ‘best as far as class can tell with the objective to be ‘ America ‘s Travel Planner’. Our versatile applications and our other related stages, recreation and business voyagers can investigate, explore, analyze costs and book an extensive variety of administrations taking into account their movement needs.
+                p With more than 2,000 sites contracted crosswise over America, we are America ‘s biggest stage for out of the box tours.
+                p A solid and “believed” travel brand of America , our qualities incorporate a vast and faithful client base, a multi-channel stage for relaxation and business explorers, a powerful portable eco-framework for a range of voyagers and providers, a solid innovation stage intended to convey an abnormal state of adaptability and advancement and a prepared senior supervisory crew including industry officials with profound roots in the movement business in America and abroad.
+    section.section-pictures
+            .picture-box
+                img.picture-box__img(src=`/img/tours/tour-5-1.jpg`, alt=`The Park Camper Tour `, class=`picture-box__img--1`)
+            .picture-box
+                img.picture-box__img(src=`/img/tours/tour-5-2.jpg`, alt=`The Park Camper Tour `, class=`picture-box__img--2`)
+            .picture-box
+                img.picture-box__img(src=`/img/tours/tour-5-3.jpg`, alt=`The Park Camper Tour `, class=`picture-box__img--3`)
+    section.section-pictures
+            .picture-box
+                img.picture-box__img(src=`/img/tours/tour-7-1.jpg`, alt=`The Park Camper Tour `, class=`picture-box__img--1`)
+            .picture-box
+                img.picture-box__img(src=`/img/tours/tour-7-2.jpg`, alt=`The Park Camper Tour `, class=`picture-box__img--2`)
+            .picture-box
+                img.picture-box__img(src=`/img/tours/tour-7-3.jpg`, alt=`The Park Camper Tour `, class=`picture-box__img--3`)
+    include components/_subscribe
+

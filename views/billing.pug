@@ -1,0 +1,33 @@
+extends base
+
+mixin navItem(link, text, icon, active)
+    li(class=`side-nav__item ${active ? 'side-nav__item--active' : ''}`)
+        a.side-nav__link(href=`${link}`)
+            svg.side-nav__icon
+                use(xlink:href=`img/icons.svg#icon-${icon}`)
+            span #{text}
+
+block content
+    section.section-account
+        .content
+            include dashboard/_sidebar
+            //- form.form.form-user-data(action='/submit-user-data' method='POST' enctype='multipart/form-data')
+            .content-settings
+                .content-settings__form.plan-settings
+                    h1.heading-primary.u-mb-4 Billing details
+                    .section-review
+                        each booking in bookings
+                            .plan-review
+                                .plan
+                                    .plan-image
+                                        h4 Price :
+                                        h1= `$${booking.price}`          
+                                    .plan-content
+                                        p= booking.createdAt
+                                        h4= `Tour: ${booking.tour.name}`
+                                        h4= `Paid: ${booking.paid ? 'Yes' : 'No'}`                                       
+                                        h5= booking.user.name
+                                        p= booking.user.email                             
+                include components/_account-menu
+
+

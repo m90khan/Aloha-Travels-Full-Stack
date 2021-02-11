@@ -1,0 +1,16 @@
+extends base
+    
+block content
+    include components/_onboarding
+    include components/_hero
+    include components/_features
+    .section-tours
+        .tour
+            .tour-heading
+                img(src='/img/svg/destination.svg' alt='destination')
+                h1.tour-heading__secondary Explore Destinations <br/> &amp; Activities
+            include components/_tours
+    .u-tc
+        a.btn.btn--primary.btn--primary-large.bg-black(href='/all-tours') View All TOURS
+
+    include components/_subscribe

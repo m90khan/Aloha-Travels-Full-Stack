@@ -1,0 +1,27 @@
+.section-hero
+    .hero
+        picture
+            source(sizes='2010px ' srcset='\
+            ./img/frontend/hero-background.png    2010w,\
+            ./img/frontend/hero-background-2x.png 4020w\
+            ' media='(min-width: 1800px)')
+            source(sizes='1800px ' srcset='\
+            ./img/frontend/hero-desktop.png 1800w,\
+            ./img/frontend/hero-desktop.png 3600w\
+            ' media='(min-width: 1200px)')
+            source(sizes='1200px ' srcset='\
+            ./img/frontend/hero-ipadpro.png    1200w,\
+            ./img/frontend/hero-ipadpro-2x.png 2400w\
+            ' media='(min-width: 900px)')
+            source(sizes='900px ' srcset='\
+            ./img/frontend/hero-ipad.png     900w,\
+            ./img/frontend/hero-ipad-2x.png 1800w\
+            ' media='(min-width: 600px)')
+            img.hero-image(sizes='600px ' srcset='\
+            ./img/frontend/hero-mobile.png  600w,\
+            ./img/frontend/hero-mobile.png 1200w\
+            ' alt='campsel hero camping background image')
+        .hero-content
+            h2.hero-content__heading Find Your New Adventure.
+            p.hero-content__subheading Book unique and adventurous tour experiences including campsites, cabins, RV parks, hills, cities, public parks and more.
+            a(href="#tours-section").btn.btn--primary.btn--primary-large EXPLORE TOURS

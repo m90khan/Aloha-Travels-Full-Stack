@@ -1,0 +1,48 @@
+extends base
+
+mixin overviewBox(label, text, icon)
+    .package-card__data
+        svg.package-card__data-icon
+            use(xlink:href=`/img/icons.svg#icon-${icon}`)
+        p
+            a(href='#')
+                 span= `${label}`
+            span=`${text}`  
+
+block content 
+    section.section-tour
+        img.hero-image(src=`/img/tours/tour-1-1.jpg`, alt=``)
+        .hero-content
+            h2.hero-content__heading Contact Aloha Travels.
+            //- p.hero-content__subheading= tour.description            
+            .heading-box.u-mb-4
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/img/icons.svg#icon-phone')
+                    h5= `+1-163-801-1341`
+                .heading-box__detail
+                    svg.heading-box__icon
+                        use(xlink:href='/img/icons.svg#icon-mail')
+                    h5.heading-box__text= `hello@alohatravels.com`
+    section.section-contact
+        .login-form.contact
+            h1.u-mb-4 STAY IN TOUCH WITH US
+            form.form.form-contact-submit
+                .form__group
+                    label.form__label(for='name') Your Name
+                    input#contact-name.form__input(type='text', placeholder='Jon Smith', required)
+                .form__group.u-mb-2
+                    label.form__label(for='email') Your Email
+                    input#contact-email.form__input(type='email', placeholder='you@example.com', required)
+                .form__group.u-mb-4    
+                    label.form__label(for='content') Your Message
+                    textarea#contact-text.form__input(type='text', placeholder='Message', required, rows="4" cols="50" autocomplete)
+                .form__group.u-mt-4
+                    button.btn.btn--primary.sign-up-btn Send Message
+            .tour-desc.u-mt-4
+                h1.u-mb-2 Social Media
+                .tour-desc__info-box
+                    +overviewBox('Instagram', ' ' , 'instagram')
+                    +overviewBox('Facebook', ' ', 'facebook')
+                    +overviewBox('Youtube','  ', 'youtube')
+                    +overviewBox('Twitter', ' ', 'twitter')
