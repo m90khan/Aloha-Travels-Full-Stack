@@ -2,7 +2,7 @@
 
 <br />
 <p align="center">
-  <a href="https://ayakaffee-app.herokuapp.com/">
+  <a href="https://aloha-travels-app.herokuapp.com/">
     <img src="./public/img/logo-aloha.png" alt="Logo" width="120" height="120">
   </a>
 
@@ -13,7 +13,7 @@ Book exciting and adventurous tours. <br />
     <a href="m90khan@gmail.com"><strong>Contact Me</strong></a>
     <br />
     <br />
-    <a href="https://ayakaffee-app.herokuapp.com/">View Demo</a>
+    <a href="https://aloha-travels-app.herokuapp.com/">View Demo</a>
     
    </p>
 </p>
@@ -32,7 +32,7 @@ Book exciting and adventurous tours. <br />
 
 Aloha Travels wants to increase its sales. They want an online platform for the existing and new customers to be able to view and book tours online and reduce office visits to a minimum due to pandemic. The company wants to pivot to offer new travel experiences in remote locations instead of city tours.
 
-Live: https://ayakaffee-app.herokuapp.com/
+Live: https://aloha-travels-app.herokuapp.com/
 
 <img src="./public/img/cover.png">
 
