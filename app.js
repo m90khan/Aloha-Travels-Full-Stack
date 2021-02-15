@@ -8,7 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
 const cookieParser = require('cookie-parser'); // to parse cookies from incoming requests
-// const { expressCspHeader, INLINE, NONE, SELF } = require('express-csp-header');
+const { expressCspHeader } = require('express-csp-header');
 const compression = require('compression');
 const APPError = require('./utils/appError');
 const errorController = require('./controllers/errorController');
@@ -19,7 +19,7 @@ app.enable('trust proxy');
 //-set template engine
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
-
+app.use(expressCspHeader());
 //*Global Middlewares
 // Access control allow origin
 app.use(cors());
@@ -29,7 +29,11 @@ app.options('*', cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // SET Security HTTP HEADERS
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false
+  })
+);
 
 /*
 - HTTP request logger middleware for node.js
