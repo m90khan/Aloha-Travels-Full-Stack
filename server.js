@@ -50,6 +50,17 @@ process.on('unhandledRejection', err => {
 });
 
 /*
+handling heroku sigterm signal to avoid requests in the buffer which heroku emits every 24 hrs 
+*/
+
+process.on('SIGTERM', () => {
+  console.log('Sigterm received, shuting down');
+  server.close(() => {
+    console.log('process closed');
+  });
+});
+
+/*
 QUery
 http://localhost:8000/api/v1/tours?price=500
 

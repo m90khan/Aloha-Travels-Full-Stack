@@ -20,7 +20,7 @@ const signToken = id => {
   });
 };
 
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(user._id);
   /* create and send jwt token as http cookie
   cookie is just a small string that server can send to client. client will store and use it
@@ -33,12 +33,10 @@ const createSendToken = (user, statusCode, res) => {
       // convert to miliseconds
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    // secure: true, // https
-    httpOnly: true // cookie cannot be accessed by browser
+    httpOnly: true, // cookie cannot be accessed by browser
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
   };
-  if (process.env.NODE_ENV === 'production') {
-    cookieOptions.secure = true;
-  }
+
   res.cookie('jwt', token, cookieOptions);
   //remove password property from response object output
   user.password = undefined;
@@ -73,7 +71,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   // - send welcome email
   const url = `${req.protocol}://${req.get('host')}/me`;
   await new Email(newUser, url).sendWelcome();
-  createSendToken(newUser, 201, res);
+  createSendToken(newUser, 201, req, res);
 });
 
 /*
@@ -97,7 +95,7 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new APPError('incorrect email or password', 401));
   }
   //3 send token to client
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 
   // const token = signToken(user._id);
   // //3-send token to client
@@ -341,7 +339,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
   */
   // 4- log the user in , send jwt
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 
   // const token = signToken(user._id);
   // //3-send token to client
@@ -370,5 +368,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   await user.save();
 
   // 4- log the user in , send jwt
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });

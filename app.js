@@ -15,7 +15,7 @@ const errorController = require('./controllers/errorController');
 const bookingController = require('./controllers/bookingController');
 
 const app = express();
-
+app.enable('trust proxy');
 //-set template engine
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
