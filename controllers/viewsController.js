@@ -130,7 +130,7 @@ exports.getLoginForm = (req, res) => {
 };
 //Signup
 
-exports.getSignupForm = catchAsync((req, res, next) => {
+exports.getSignupForm = catchAsync((req, res) => {
   res.status(200).render('signup', {
     title: `Sign up for a account`
   });
