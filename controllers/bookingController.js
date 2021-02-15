@@ -59,9 +59,9 @@ specify details about product })
 
 const createBookingCheckout = async session => {
   // exports.createBookingCheckout = catchAsync(async (req, res, next) => {
-  const { tour, user, price } = req.query;
+  // const { tour, user, price } = req.query;
 
-  if (!tour && !user && !price) return next();
+  // if (!tour && !user && !price) return next();
   // await Booking.create({ tour, user, price });
 
   // res.redirect(req.originalUrl.split('?')[0]);
