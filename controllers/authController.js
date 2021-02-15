@@ -70,8 +70,8 @@ exports.signup = catchAsync(async (req, res, next) => {
   });
   // - send welcome email
   const url = `${req.protocol}://${req.get('host')}/me`;
-  createSendToken(newUser, 201, req, res);
   await new Email(newUser, url).sendWelcome();
+  createSendToken(newUser, 201, req, res);
 });
 
 /*

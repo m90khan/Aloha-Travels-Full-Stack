@@ -1,5 +1,6 @@
-const express = require('express');
 const path = require('path');
+const express = require('express');
+const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -9,7 +10,6 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser'); // to parse cookies from incoming requests
 // const { expressCspHeader, INLINE, NONE, SELF } = require('express-csp-header');
 const compression = require('compression');
-const morgan = require('morgan');
 const APPError = require('./utils/appError');
 const errorController = require('./controllers/errorController');
 const bookingController = require('./controllers/bookingController');
@@ -21,20 +21,12 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 //*Global Middlewares
-// Serving  Static Fields
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(function(req, res, next) {
-  // res.set({
-  //   'Content-Security-Policy': `default-src 'self' http: https:;block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data: blob:;object-src 'none';script-src 'self' https://api.mapbox.com https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval';script-src-elem https: http: ;script-src-attr 'self' https://api.mapbox.com https://cdn.jsdelivr.net 'unsafe-inline';style-src 'self' https://api.mapbox.com https://fonts.googleapis.com 'unsafe-inline';worker-src 'self' blob:`
-  // });
-  return next();
-});
 // Access control allow origin
 app.use(cors());
-
 // for non simple requests during the preflight
 app.options('*', cors());
+// Serving  Static Fields
+app.use(express.static(path.join(__dirname, 'public')));
 
 // SET Security HTTP HEADERS
 app.use(helmet());
@@ -64,7 +56,7 @@ app.use('/api', limiter); // only limiting it to api routes
 // Stripe webhook, BEFORE body-parser, because stripe needs the body as stream not json
 app.post(
   '/webhook-checkout',
-  express.raw({ type: 'application/json' }),
+  bodyParser.raw({ type: 'application/json' }),
   bookingController.webhookCheckout
 );
 
