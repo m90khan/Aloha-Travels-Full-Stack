@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const cors = require('cors');
 const cookieParser = require('cookie-parser'); // to parse cookies from incoming requests
 const bodyParser = require('body-parser'); // for stripe
 // const { expressCspHeader, INLINE, NONE, SELF } = require('express-csp-header');
@@ -30,8 +31,14 @@ app.use(function(req, res, next) {
   // });
   return next();
 });
+// Access control allow origin
+app.use(cors());
+
+// for non simple requests during the preflight
+app.options('*', cors());
+
 // SET Security HTTP HEADERS
-app.use(helmet({ contentSecurityPolicy: false }));
+app.use(helmet());
 
 /*
 - HTTP request logger middleware for node.js
