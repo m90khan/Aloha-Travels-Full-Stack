@@ -13,6 +13,7 @@ import Intro from './modules/intro';
 import { deleteMyReview, createMyReview } from './dashboard';
 // import WishList from './modules/wishList';
 import { forgotPassword, resetPassword } from './modules/forgotPassword';
+import { showAlert } from './alerts';
 
 // new WishList();
 
