@@ -45,7 +45,7 @@ export const signUp = (name, email, password, passwordConfirm) => {
       }
     })
     .catch(err => {
-      showAlert('error', 'Error signing up. Try again.');
+      showAlert('error', 'Error signing up. Try again.', err);
     });
 };
 

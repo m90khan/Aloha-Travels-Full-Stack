@@ -130,11 +130,11 @@ exports.getLoginForm = (req, res) => {
 };
 //Signup
 
-exports.getSignupForm = catchAsync((req, res) => {
+exports.getSignupForm = (req, res) => {
   res.status(200).render('signup', {
     title: `Sign up for a account`
   });
-});
+};
 //forgot
 exports.forgotPasswordTemplate = (req, res) => {
   res.status(200).render('password/forgot-email', {
