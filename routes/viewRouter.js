@@ -8,8 +8,8 @@ viewRouter.use(viewsController.alerts);
 viewRouter.get(
   // ????????
   '/my-tours',
+  // bookingController.createBookingCheckout,
   authController.protect,
-  bookingController.createBookingCheckout,
   viewsController.getMyTours
 );
 

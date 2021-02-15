@@ -62,17 +62,17 @@ const limiter = rateLimit({
 
 app.use('/api', limiter); // only limiting it to api routes
 
-// Stripe webhook, BEFORE body-parser, because stripe needs the body as stream
+// Stripe webhook, BEFORE body-parser, because stripe needs the body as stream not json
 app.post(
   '/webhook-checkout',
-  bodyParser.raw({ type: 'application/json' }),
+  express.raw({ type: 'application/json' }),
   bookingController.webhookCheckout
 );
 
 //- Middlewares
-app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 // Body Parser: function that can modify the incoming data. from body to req.body
 app.use(express.json({ limit: '10kb' })); // limit body data
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 // cookie Parser: to parse data from cookie on incoming reqquests
 app.use(cookieParser());
 // Data Sanitization against noSQL query Injections  email: {"$gt": ""}

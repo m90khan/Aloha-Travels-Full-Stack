@@ -26,10 +26,10 @@ specify details about product })
   */
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    success_url: `${req.protocol}://${req.get('host')}/my-tours/?tour=${
-      req.params.tourId
-    }&user=${req.user.id}&price=${tour.price}`,
-    // success_url: `${req.protocol}://${req.get('host')}/my-tours?alert=booking`,
+    // success_url: `${req.protocol}://${req.get('host')}/my-tours/?tour=${
+    //   req.params.tourId
+    // }&user=${req.user.id}&price=${tour.price}`,
+    success_url: `${req.protocol}://${req.get('host')}/my-tours`,
     cancel_url: `${req.protocol}://${req.get('host')}/tour/${tour.slug}`,
     customer_email: req.user.email,
     client_reference_id: req.params.tourId,
@@ -37,12 +37,12 @@ specify details about product })
       {
         name: `${tour.name} Tour`,
         description: tour.summary,
-        images: [`https://www.natours.dev/img/tours/${tour.imageCover}`],
+        // images: [`https://www.natours.dev/img/tours/${tour.imageCover}`],
 
-        // images: [
-        //   // images only work on live websites
-        //   `${req.protocol}://${req.get('host')}/img/tours/${tour.imageCover}`
-        // ],
+        images: [
+          // images only work on live websites
+          `${req.protocol}://${req.get('host')}/img/tours/${tour.imageCover}`
+        ],
         amount: tour.price * 100, // amount expected to be in cents. so multiply by 100
         currency: 'usd', // currency  'eur'
         quantity: 1
@@ -57,22 +57,22 @@ specify details about product })
   });
 });
 
-// exports.createBookingCheckout = async session => {
-
-exports.createBookingCheckout = catchAsync(async (req, res, next) => {
+const createBookingCheckout = async session => {
+  // exports.createBookingCheckout = catchAsync(async (req, res, next) => {
   const { tour, user, price } = req.query;
 
   if (!tour && !user && !price) return next();
-  await Booking.create({ tour, user, price });
-
-  res.redirect(req.originalUrl.split('?')[0]);
-  // const tour = session.client_reference_id;
-  // const user = (await User.findOne({ email: session.customer_email })).id;
-  // const price = session.display_items[0].amount / 100;
   // await Booking.create({ tour, user, price });
-});
+
+  // res.redirect(req.originalUrl.split('?')[0]);
+  const tour = session.client_reference_id;
+  const user = (await User.findOne({ email: session.customer_email })).id;
+  const price = session.display_items[0].amount / 100;
+  await Booking.create({ tour, user, price });
+};
 
 exports.webhookCheckout = (req, res, next) => {
+  // read stripe signature from headers
   const signature = req.headers['stripe-signature'];
 
   let event;
@@ -86,8 +86,9 @@ exports.webhookCheckout = (req, res, next) => {
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
 
-  if (event.type === 'checkout.session.completed')
+  if (event.type === 'checkout.session.completed') {
     createBookingCheckout(event.data.object);
+  }
 
   res.status(200).json({ received: true });
 };
