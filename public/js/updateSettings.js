@@ -7,8 +7,8 @@ import { showAlert } from './alerts';
 export const updateSettings = (data, type) => {
   const url =
     type === 'password'
-      ? 'http://localhost:8000/api/v1/users/updateMyPassword'
-      : 'http://localhost:8000/api/v1/users/updateMe';
+      ? '/api/v1/users/updateMyPassword'
+      : '/api/v1/users/updateMe';
 
   axios({
     method: 'PATCH',
@@ -17,7 +17,6 @@ export const updateSettings = (data, type) => {
   })
     .then(res => {
       if (res.data.status === 'success') {
-        console.log(res.data);
         showAlert('success', `${type.toUpperCase()}: updated successfully!`);
         window.setTimeout(() => {
           location.assign('/me');

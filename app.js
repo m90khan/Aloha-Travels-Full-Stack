@@ -8,7 +8,7 @@ const hpp = require('hpp');
 const cookieParser = require('cookie-parser'); // to parse cookies from incoming requests
 const bodyParser = require('body-parser'); // for stripe
 // const { expressCspHeader, INLINE, NONE, SELF } = require('express-csp-header');
-
+const compression = require('compression');
 const morgan = require('morgan');
 const APPError = require('./utils/appError');
 const errorController = require('./controllers/errorController');
@@ -85,7 +85,7 @@ app.use(
     ]
   })
 );
-
+app.use(compression());
 // Test Middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();

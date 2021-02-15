@@ -6,7 +6,7 @@ import { showAlert } from './alerts';
 export const createMyReview = (review, rating, tour, user) => {
   axios({
     method: 'POST',
-    url: `http://localhost:8000/api/v1/reviews`,
+    url: `/api/v1/reviews`,
     data: {
       review: review,
       rating: rating,
@@ -30,7 +30,7 @@ export const createMyReview = (review, rating, tour, user) => {
 export const deleteMyReview = reviewId => {
   axios({
     method: 'DELETE',
-    url: `http://localhost:8000/api/v1/reviews/${reviewId}`
+    url: `/api/v1/reviews/${reviewId}`
   })
     .then(res => {
       if (res.status === 204) {

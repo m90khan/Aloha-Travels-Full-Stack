@@ -56,4 +56,4 @@ class Scrooth {
 
 const body = new Scrooth();
 
-console.log(body);
+// console.log(body);

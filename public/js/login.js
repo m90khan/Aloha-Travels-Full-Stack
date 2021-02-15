@@ -6,7 +6,7 @@ import { showAlert } from './alerts';
 export const login = (email, password) => {
   axios({
     method: 'POST',
-    url: 'http://localhost:8000/api/v1/users/login',
+    url: '/api/v1/users/login',
     data: {
       email,
       password
@@ -28,7 +28,7 @@ export const login = (email, password) => {
 export const signUp = (name, email, password, passwordConfirm) => {
   axios({
     method: 'POST',
-    url: 'http://localhost:8000/api/v1/users/signup',
+    url: '/api/v1/users/signup',
     data: {
       name,
       email,
@@ -52,7 +52,7 @@ export const signUp = (name, email, password, passwordConfirm) => {
 export const logout = () => {
   axios({
     method: 'GET',
-    url: 'http://localhost:8000/api/v1/users/logout'
+    url: '/api/v1/users/logout'
   })
     .then(res => {
       if ((res.data.status = 'success')) {
@@ -64,7 +64,7 @@ export const logout = () => {
       showAlert('success', 'You have been logged out successfully!');
     })
     .catch(err => {
-      console.log(err.response);
+      // console.log(err.response);
       showAlert('error', 'Error logging out. Try again.');
     });
 };
