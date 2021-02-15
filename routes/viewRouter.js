@@ -67,7 +67,7 @@ viewRouter.get(
   viewsController.getLoginForm
 );
 // signup (signup.pug). POST Front-end
-viewRouter.get('/signup', viewsController.getSignupForm);
+viewRouter.get('/sign-up', viewsController.getSignupForm);
 // forgot password (forgot-email.pug). POST Front-end
 viewRouter.get('/forgot-password', viewsController.forgotPasswordTemplate);
 // reset password (forgot-email.pug). POST Front-end

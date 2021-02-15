@@ -7,7 +7,6 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
 const cookieParser = require('cookie-parser'); // to parse cookies from incoming requests
-const bodyParser = require('body-parser'); // for stripe
 // const { expressCspHeader, INLINE, NONE, SELF } = require('express-csp-header');
 const compression = require('compression');
 const morgan = require('morgan');
