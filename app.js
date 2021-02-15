@@ -19,7 +19,6 @@ app.enable('trust proxy');
 //-set template engine
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
-app.use(expressCspHeader());
 //*Global Middlewares
 // Access control allow origin
 app.use(cors());
@@ -35,6 +34,7 @@ app.use(
   })
 );
 
+app.use(expressCspHeader());
 /*
 - HTTP request logger middleware for node.js
 dev: Concise output colored by response status for development use. 
